@@ -10,12 +10,13 @@ on:
         type: boolean
         description: True or False
       choice:
-        type: choice
+        type: multi-choice
         description: Make a choice
         options:
-        - foo
-        - bar
-        - baz
+        - web
+        - cron
+        - worker
+        - client 
 jobs:
   build:
     runs-on: ubuntu-latest
