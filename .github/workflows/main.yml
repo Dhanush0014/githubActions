@@ -16,7 +16,6 @@ on:
         - web
         - cron
         - worker
-        - client 
 jobs:
   build:
     runs-on: ubuntu-latest
