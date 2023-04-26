@@ -1,17 +1,18 @@
 name: CI
 
 on:
-  workflow_dispatch
-#     inputs:
-#        choice:
-#         type: choice
-#         description: Make a choice
-#         options: |
-#               "option1",
-#               "option2",
-#               "option3",
-#               "-"
-#               "all"
+  workflow_dispatch:
+    inputs:
+      Main:
+        type: boolean
+        default: false
+        required: true
+        description: Main
+      Internal:
+        type: boolean
+        description: Internal
+        default: false
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +20,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: greet
         run: |
-          echo "URL: ${{ vars.HEROKU_MAIN }}"
+          echo "Main"  ${{ inputs.Main }} 
+          echo "Internal"  ${{ inputs.Internal }} 
+      - name: Main
+        if: ${{ inputs.Main }}
+        run: echo ${{ vars.HEROKU_MAIN }}
+      - name: Internal
+        if: ${{ inputs.Internal }}
+        run: echo ${{ vars.HEROKU_INTERNAL }}
+        
