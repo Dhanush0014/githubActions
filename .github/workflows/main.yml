@@ -24,6 +24,8 @@ jobs:
         run: |
           echo "Main"  ${{ inputs.Main }} 
           echo "Internal"  ${{ inputs.Internal }} 
+          echo ${{ vars.MAIN }}
+          echo "MAIN_URL ${{ vars.MAIN.HEROKU_URL }}" 
       - name: Main
         if: ${{ inputs.Main }}
         run: echo ${{ vars.HEROKU_MAIN }}
