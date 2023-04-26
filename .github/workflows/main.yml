@@ -1,21 +1,8 @@
 name: CI
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        type: string
-        description: Select the environment
-      boolean:
-        type: boolean
-        description: True or False
-      choice:
-        type: multi-choice
-        description: Make a choice
-        options:
-        - web
-        - cron
-        - worker
+workflow_dispatch
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,8 +12,5 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: greet
-        run: | 
-          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
-          echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }} 
-          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
+        run: |
           echo "accessing env ${{ env.HEROKU_MAIN }}"
