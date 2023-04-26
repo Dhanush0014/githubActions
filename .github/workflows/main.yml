@@ -1,7 +1,17 @@
 name: CI
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+       choice:
+        type: choice
+        description: Make a choice
+        options: |
+              "option1",
+              "option2",
+              "option3",
+              "-"
+              "all"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,4 +22,5 @@ jobs:
 
       - name: greet
         run: |
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
           echo "URL: ${{ vars.HEROKU_MAIN }}"
