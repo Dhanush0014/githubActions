@@ -17,14 +17,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: WARMUP
-    steps:
-      - name: Set environment variable
+    strategy:
+      matrix:
+        app: 
+          - ${{ vars.HEROKU_MAIN }} 
+          - ${{ vars.HEROKU_INTERNAL }} 
+    steps: 
+      - uses: actions/checkout@v2
+      - name: Deploy main
+      - if: ${{ inputs.Main }} == true && matrix.app == ${{ vars.HEROKU_MAIN }}
         run: |
-          MY_STRING='val1,val2'
-          MY_ARRAY=(${MY_STRING//,/ })
-          echo "${MY_ARRAY[@]}"
-          declare -p MY_ARRAY
-
+          echo ${{ matrix.index }}
+          echo "Deploying to main"
+      - name: Deploy Internal
+      - if: ${{ inputs.Internal }} == true && matrix.app == ${{ vars.HEROKU_INTERNAL }}
+        run: |
+          echo ${{ matrix.index }}
+          echo "Deploying to Internal"
+        
+      
 
 #     steps:
 #       - uses: actions/checkout@v2
