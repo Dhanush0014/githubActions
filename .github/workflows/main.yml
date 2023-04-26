@@ -19,6 +19,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: WARMUP
 
     steps:
       - uses: actions/checkout@v2
@@ -28,4 +29,4 @@ jobs:
           echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
           echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }} 
           echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
-          echo "accessing env ${{ WARMUP.HEROKU_MAIN }} 
+          echo "accessing env ${{ env.HEROKU_MAIN }}"
