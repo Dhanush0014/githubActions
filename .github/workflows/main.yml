@@ -17,19 +17,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: WARMUP
-
     steps:
-      - uses: actions/checkout@v2
-      - name: greet
+      - name: Set environment variable
         run: |
-          echo "Main"  ${{ inputs.Main }} 
-          echo "Internal"  ${{ inputs.Internal }} 
-          echo ${{ vars.MAIN }}
-          echo "MAIN_URL ${{ vars.MAIN.HEROKU_URL }}" 
-      - name: Main
-        if: ${{ inputs.Main }}
-        run: echo ${{ vars.HEROKU_MAIN }}
-      - name: Internal
-        if: ${{ inputs.Internal }}
-        run: echo ${{ vars.HEROKU_INTERNAL }}
+          MY_STRING='[val1,val2]'
+          MY_ARRAY=(${MY_STRING//,/ })
+          echo MY_ARRAY
+          declare -p MY_ARRAY
+
+
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: greet
+#         run: |
+#           echo "Main"  ${{ inputs.Main }} 
+#           echo "Internal"  ${{ inputs.Internal }} 
+#           echo ${{ vars.MAIN }}
+#           echo "MAIN_URL ${{ vars.MAIN.HEROKU_URL }}" 
+#       - name: Main
+#         if: ${{ inputs.Main }}
+#         run: echo ${{ vars.HEROKU_MAIN }}
+#       - name: Internal
+#         if: ${{ inputs.Internal }}
+#         run: echo ${{ vars.HEROKU_INTERNAL }}
         
