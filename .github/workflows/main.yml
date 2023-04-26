@@ -12,7 +12,4 @@ jobs:
 
       - name: greet
         run: |
-          echo "URL: ${{ env.HEROKU_MAIN }}"
-      - name: List Environment Variables
-        run: |
-          env
+          echo "URL: ${{ vars.HEROKU_MAIN }}"
