@@ -22,7 +22,7 @@ jobs:
         run: |
           MY_STRING='val1,val2'
           MY_ARRAY=(${MY_STRING//,/ })
-          echo $MY_ARRAY
+          echo $MY_ARRAY[@]
           declare -p MY_ARRAY
 
 
