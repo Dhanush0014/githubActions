@@ -25,14 +25,14 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: Deploy main
-        if: ${{ inputs.Main }} == true && matrix.app == ${{ vars.HEROKU_MAIN }}
+        if: ${{ inputs.Main }} == true && ${{ matrix.app }} == ${{ vars.HEROKU_MAIN }}
         run: |
-          echo ${{ matrix.index }}
+          echo ${{ matrix.app }}
           echo "Deploying to main"
       - name: Deploy Internal
-        if: ${{ inputs.Internal }} == true && matrix.app == ${{ vars.HEROKU_INTERNAL }}
+        if: ${{ inputs.Internal }} == true && ${{ matrix.app }} == ${{ vars.HEROKU_INTERNAL }}
         run: |
-          echo ${{ matrix.index }}
+          echo ${{ matrix.app }}
           echo "Deploying to Internal"
         
       
