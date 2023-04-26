@@ -13,4 +13,4 @@ jobs:
 
       - name: greet
         run: |
-          echo "accessing env ${{ env.HEROKU_MAIN }}"
+          echo ${{ env.HEROKU_MAIN }}
